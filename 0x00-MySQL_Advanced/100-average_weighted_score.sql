@@ -1,20 +1,13 @@
 -- Create procedure
 DELIMITER $$
 
-CREATE PROCEDURE ComputeAverageWeightedScoreForUser(IN user_id INT)
+CREATE PROCEDURE ComputeAverageWeightedScoreForUser(user_id INT)
 BEGIN
-    DECLARE total_weight INT DEFAULT 0
-    DECLARE weighted_sum FLOAT DEFAULT 0
+    DECLARE weight_average_score FLOAT;
+    set weight_average_score = (SELECT SUM(weight * score) / SUM(weight) FROM users AS U JOIN corrections AS C ON U.id = C.user_id Join projects AS P ON C.project_id = P.id WHERE U.id = user_id);
 
-    SELECT SUM (c.score * p.weight) INTO weighted_sum, SUM (p.weight) INTO total_weight FROM correction C
-    JOIN projects p On c.project_id = p.id
-    WHERE c.user_id = user_id;
+    UPDATE users SET average_weighted_score = weight_average_score WHERE id = user_id;
 
-    IF total_weight > 0 THEN
-        UPDATE users SET average_weighted_score = (weighted_sum / total_weight) WHERE id = user_id;
-    ELSE
-        UPDATE users SET average_weighted_score = 0 WHERE id = user_id;
-    END IF;
-END$$
+END $$
 
 DELIMITER ;
