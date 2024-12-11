@@ -1,6 +1,6 @@
 -- create trigger
 CREATE TRIGGER valid_email
-AFTER INSERT ON users
+AFTER UPDATE ON users
 FOR EACH ROW
 BEGIN
     IF OLD.email <> NEW.email THEN
