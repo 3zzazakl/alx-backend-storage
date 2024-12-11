@@ -1,7 +1,7 @@
 -- fans
 SELECT 
     TRIM(origin) AS origin, 
-    SUM(fans) AS fans
+    SUM(fans) AS nb_fans
 FROM metal_bands
 GROUP BY TRIM(origin)
-ORDER BY fans DESC;
+ORDER BY nb_fans DESC;
