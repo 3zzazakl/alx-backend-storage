@@ -1,0 +1,5 @@
+// find documents
+var db = connect('mongodb://' + my_db)
+var result = db.school.find({"name": /^ALX/})
+
+result.forEach(printjson)
