@@ -1,0 +1,3 @@
+# list databases
+#!/bin/bash
+mongo --eval "printjson(db.adminCommand('listDatabases'))"
