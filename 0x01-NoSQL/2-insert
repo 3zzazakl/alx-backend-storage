@@ -1,2 +1,3 @@
 // insert document into school collection
 db.school.insert({ name: "ALX" });
+db.school.insert({ name: "HBTN" });
