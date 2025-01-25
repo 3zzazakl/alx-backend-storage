@@ -5,10 +5,11 @@ Keyword arguments:
 argument -- description
 Return: return_description
 """
-import redis
-import requests
 from functools import wraps
 from typing import Callable
+import redis
+import requests
+
 
 redis_store = redis.Redis()
 
