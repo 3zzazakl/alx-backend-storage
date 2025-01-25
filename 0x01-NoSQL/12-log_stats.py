@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""sumary_line
+"""summary_line
 
 Keyword arguments:
 argument -- description
