@@ -1,2 +1,2 @@
 // all documents
-db.school.find().pretty()
+db.school.find().pretty();
